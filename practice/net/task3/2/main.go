@@ -25,9 +25,11 @@ func main() {
 			return
 		}
 		fmt.Print("Ответ: ")
+		conn.SetReadDeadline(time.Now().Add(time.Second * 30))
 		buf := make([]byte, 1024)
 		n, err := conn.Read(buf)
 		if err != nil {
+			fmt.Println("504 Gateway Timeout")
 			break
 		}
 		fmt.Println(string(buf[:n]))

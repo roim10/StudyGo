@@ -1,20 +1,30 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"net"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func handleConnection(conn net.Conn) {
 	defer conn.Close()
 	for {
 		input := make([]byte, (1024 * 4))
+		conn.SetReadDeadline(time.Now().Add(time.Second * 5))
 		n, err := conn.Read(input)
 		if n == 0 || err != nil {
+			var netErr net.Error
+			if errors.As(err, &netErr) && netErr.Timeout() {
+				fmt.Println("Таймаут")
+				conn.Write([]byte("timeout"))
+				continue
+			}
 			conn.Write([]byte("Ошибка: соеденение потеряно\n"))
 			break
+
 		}
 		source := string(input[:n])
 		partSource := strings.Fields(source)
