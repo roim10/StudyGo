@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+</head>
+<body>
+    <h2>Регистрация пользователя</h2>
+    <form method="POST" action="/register">
+        <label>Логин</label><br>
+        <input type="text" name="login" /><br><br>
+
+        <label>Email</label><br>
+        <input type="text" name="email" /><br><br>
+
+        <label>Пароль</label><br>
+        <input type="password" name="password" /><br><br>
+
+        <label>Город</label><br>
+        <select name="city">
+            <option value="Москва">Москва</option>
+            <option value="Санкт-Петербург">Санкт-Петербург</option>
+            <option value="Нижний Новгород">Нижний Новгород</option>
+            <option value="Казань">Казань</option>
+        </select><br><br>
+
+        <input type="submit" value="Зарегистрироваться" />
+    </form>
+</body>
+</html>
