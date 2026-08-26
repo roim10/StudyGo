@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Список товаров</title>
+</head>
+<body>
+    <h1>Список товаров</h1>
+
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>Название</th>
+            <th>Цена</th>
+        </tr>
+        {{ range .Products }}
+        <tr>
+            <td>{{ .Title }}</td>
+            <td>{{ .Price }} руб.</td>
+        </tr>
+        {{ end }}
+    </table>
+
+    <h3>Итого: {{ .Total }} руб.</h3>
+</body>
+</html>

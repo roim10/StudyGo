@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Результат экзамена</title>
+</head>
+<body>
+    <h1>Ваш балл: {{ .Score }}</h1>
+
+    {{ if .Passed }}
+        <p style="color: green;">Экзамен сдан!</p>
+    {{ else }}
+        <p style="color: red;">Экзамен не сдан.</p>
+    {{ end }}
+</body>
+</html>
